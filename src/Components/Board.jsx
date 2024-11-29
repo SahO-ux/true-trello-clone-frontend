@@ -56,11 +56,24 @@ function Board() {
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
-            {board.lists.map((listId, index) => (
-              <List key={listId} index={index} listId={listId} />
-            ))}
+            <div className="h-screen bg-gray-100 flex flex-col">
+              <div className="flex-1 overflow-x-auto overflow-y-hidden p-4">
+                <div className="flex space-x-4">
+                  {/* Render all lists */}
+                  {board.lists.map((listId, index) => (
+                    <List key={listId} index={index} listId={listId} />
+                  ))}
+                  {/* Add New List Button */}
+                  <button
+                    onClick={createList}
+                    className="flex-shrink-0 bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-blue-600 transition duration-200"
+                  >
+                    Add New List
+                  </button>
+                </div>
+              </div>
+            </div>
             {provided.placeholder}
-            <button onClick={createList}>Add New List</button>
           </div>
         )}
       </Droppable>

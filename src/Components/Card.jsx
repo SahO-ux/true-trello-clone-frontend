@@ -6,7 +6,6 @@ import Modal from "./Modal";
 function Card({ cardId, listId, index }) {
   const dispatch = useDispatch();
   const card = useSelector((state) => state.cardsById[cardId]);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const deleteCard = () => {
@@ -21,7 +20,7 @@ function Card({ cardId, listId, index }) {
       <Draggable draggableId={card._id} index={index}>
         {(provided) => (
           <div
-            className="card"
+            className="bg-gray-100 rounded p-2 mb-2 shadow cursor-pointer hover:bg-gray-200"
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
