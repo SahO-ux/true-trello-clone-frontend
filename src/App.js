@@ -1,9 +1,24 @@
-import React from 'react'
+import React from "react";
+import { useDispatch } from "react-redux";
 
-const App = () => {
+import "./App.css";
+import Header from "./Components/Header";
+import Board from "./Components/Board";
+
+function App() {
+  const dispatch = useDispatch();
+
+  const resetBoard = () => {
+    localStorage.removeItem("state");
+    dispatch({ type: "RESET" });
+  };
+
   return (
-    <div>App</div>
-  )
+    <div className="app">
+      <Header resetBoard={resetBoard} />
+      <Board />
+    </div>
+  );
 }
 
-export default App
+export default App;
