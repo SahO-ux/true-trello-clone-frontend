@@ -11,7 +11,7 @@ function Modal({
   const [description, setDescription] = useState(card.description || "");
   const [dueDate, setDueDate] = useState(card.dueDate || "");
 
-  const saveChanges = (title, description, dueDate) => {
+  const saveChanges = () => {
     dispatch({
       type: "EDIT_CARD",
       payload: { cardId: card._id, title, description, dueDate },
