@@ -1,7 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
-import _ from "lodash";
 
 import List from "./List";
 
@@ -18,8 +17,8 @@ function Board() {
           type: "MOVE_LIST",
           payload: {
             oldListIndex: source.index,
-            newListIndex: destination.index
-          }
+            newListIndex: destination.index,
+          },
         });
       }
       return;
@@ -35,8 +34,8 @@ function Board() {
           sourceListId: source.droppableId,
           destListId: destination.droppableId,
           oldCardIndex: source.index,
-          newCardIndex: destination.index
-        }
+          newCardIndex: destination.index,
+        },
       });
     }
   };
@@ -44,7 +43,7 @@ function Board() {
   const createList = () => {
     dispatch({
       type: "ADD_LIST",
-      payload: { listId: `${Date.now()}`, listTitle: "New List" }
+      payload: { listId: `${Date.now()}`, listTitle: "New List" },
     });
   };
 
@@ -58,18 +57,10 @@ function Board() {
             {...provided.droppableProps}
           >
             {board.lists.map((listId, index) => (
-              <List
-                key={listId}
-                index={index}
-                listId={listId}
-              />
+              <List key={listId} index={index} listId={listId} />
             ))}
             {provided.placeholder}
-            <button
-              onClick={createList}
-            >
-              Add New List
-            </button>
+            <button onClick={createList}>Add New List</button>
           </div>
         )}
       </Droppable>
